@@ -17,9 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        const isActive = navLinks.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isActive);
+        
         const icon = hamburger.querySelector('i');
-        if (navLinks.classList.contains('active')) {
+        if (isActive) {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-times');
         } else {
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     links.forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
             const icon = hamburger.querySelector('i');
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
@@ -109,4 +112,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 3. Scroll Animations (Intersection Observer)
+    const fadeElements = document.querySelectorAll('.section-title, .service-card, .pricing-card, .testimonial-card');
+    const leftElements = document.querySelectorAll('.contact-info, .footer-about');
+    const rightElements = document.querySelectorAll('.contact-form-wrapper, .footer-links, .footer-services');
+
+    // Add animation base classes dynamically (so no-js users still see the content)
+    fadeElements.forEach(el => el.classList.add('reveal'));
+    leftElements.forEach(el => el.classList.add('reveal-left'));
+    rightElements.forEach(el => el.classList.add('reveal-right'));
+
+    // Setup the observer
+    const animationObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Animates only once
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15, // Trigger when 15% of the element is visible
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    // Observe all elements that have these classes
+    const allAnimatedElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    allAnimatedElements.forEach(el => animationObserver.observe(el));
 });

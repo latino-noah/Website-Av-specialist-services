@@ -3,10 +3,10 @@
 =============================================*/
 :root {
     /* Colors */
-    --primary: #059669; /* Emerald Green */
-    --primary-dark: #047857;
-    --secondary: #1e293b; /* Slate Dark */
-    --accent: #38bdf8; /* Light Blue Accent */
+    --primary: #2563eb; /* Modern Blue */
+    --primary-dark: #1d4ed8;
+    --secondary: #0f172a; /* Slate Dark */
+    --accent: #3b82f6; /* Light Blue Accent */
     --bg-light: #f8fafc;
     --text-main: #334155;
     --text-light: #64748b;
@@ -52,6 +52,14 @@ a {
 
 ul {
     list-style: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
 }
 
 /*=============================================
@@ -251,6 +259,9 @@ ul {
     font-size: 1.5rem;
     color: var(--white);
     cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 5px;
 }
 
 .navbar.scrolled .hamburger {
@@ -263,7 +274,7 @@ ul {
 .hero {
     height: 100vh;
     min-height: 750px;
-    background: url('https://images.unsplash.com/photo-1581560242595-535307525287?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     display: flex;
     align-items: center;
     position: relative;
@@ -353,7 +364,7 @@ ul {
 }
 
 .hero-features i {
-    color: #10b981; /* Success Green */
+    color: #3b82f6; /* Accent Blue */
     font-size: 1.25rem;
 }
 
@@ -390,7 +401,7 @@ ul {
 .icon-box {
     width: 70px;
     height: 70px;
-    background-color: rgba(5, 150, 105, 0.1);
+    background-color: rgba(37, 99, 235, 0.1);
     color: var(--primary);
     border-radius: 50%;
     display: flex;
@@ -554,7 +565,7 @@ ul {
 
 .info-item i {
     color: var(--primary);
-    background-color: rgba(5, 150, 105, 0.1);
+    background-color: rgba(37, 99, 235, 0.1);
     height: 40px;
     width: 40px;
     display: flex;
@@ -608,7 +619,7 @@ ul {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .error-msg {
@@ -728,6 +739,47 @@ footer {
     color: #64748b;
     font-size: 0.9rem;
 }
+
+/*=============================================
+=            Scroll Animations                =
+=============================================*/
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Stagger for grid items so they animate in sequence */
+.grid > .reveal:nth-child(1) { transition-delay: 0.1s; }
+.grid > .reveal:nth-child(2) { transition-delay: 0.3s; }
+.grid > .reveal:nth-child(3) { transition-delay: 0.5s; }
 
 /*=============================================
 =            Responsive Design                =

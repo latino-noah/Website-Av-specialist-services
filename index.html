@@ -3,20 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Clean | Professional Local Services</title>
+    <meta name="description" content="Top-rated digital agency offering professional website building, stunning video editing, and modern photography to elevate your brand's presence.">
+    <meta name="keywords" content="website building, web design, video editing, photography, digital agency, branding, front-end development, media production">
+    <meta name="author" content="Urban Digital">
+    <link rel="canonical" href="https://www.urbandigital.com/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.urbandigital.com/">
+    <meta property="og:title" content="Urban Digital | Web Design, Video & Photography">
+    <meta property="og:description" content="Top-rated digital agency offering professional website building, stunning video editing, and modern photography to elevate your brand's presence.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.urbandigital.com/">
+    <meta property="twitter:title" content="Urban Digital | Web Design, Video & Photography">
+    <meta property="twitter:description" content="Top-rated digital agency offering professional website building, stunning video editing, and modern photography to elevate your brand's presence.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    
+    <meta name="theme-color" content="#2563eb">
+    <title>Urban Digital | Websites, Video Editing & Photography</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Custom Assets -->
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
+    <!-- Schema.org Structured Data for Local Business SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Urban Digital",
+      "image": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+      "description": "Professional web design, video editing, and photography agency.",
+      "telephone": "(555) 123-4567",
+      "email": "hello@urbandigital.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Creative Street",
+        "addressLocality": "Metro City",
+        "addressRegion": "ST",
+        "postalCode": "12345",
+        "addressCountry": "US"
+      },
+      "url": "https://www.urbandigital.com",
+      "priceRange": "$$$"
+    }
+    </script>
 </head>
 <body>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Urban<span>Clean</span></a>
+            <a href="#" class="logo" aria-label="Urban Digital Home">Urban<span>Digital</span></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -24,12 +77,13 @@
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact" class="btn btn-outline">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </div>
     </nav>
 
+    <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
@@ -39,12 +93,12 @@
                 </div>
                 <span>Trusted by 500+ Local Customers</span>
             </div>
-            <h1>Fast, Reliable & Affordable Cleaning Services</h1>
-            <p>Expert car washing, sparkling window cleaning, and pristine garden maintenance to keep your home looking its absolute best.</p>
+            <h1>Professional Web Design, Video & Photography</h1>
+            <p>Expert website building, cinematic video editing, and modern photography to elevate your brand and capture your audience.</p>
             
             <div class="hero-features">
-                <span><i class="fas fa-check-circle"></i> Fully Insured</span>
-                <span><i class="fas fa-check-circle"></i> Eco-Friendly Products</span>
+                <span><i class="fas fa-check-circle"></i> Custom Designs</span>
+                <span><i class="fas fa-check-circle"></i> High-Quality Media</span>
                 <span><i class="fas fa-check-circle"></i> 100% Satisfaction</span>
             </div>
 
@@ -66,26 +120,26 @@
                 <!-- Service 1 -->
                 <div class="card service-card">
                     <div class="icon-box">
-                        <i class="fas fa-car-side"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Car Washing</h3>
-                    <p>Comprehensive interior and exterior detailing. We use eco-friendly products to make your car look brand new.</p>
+                    <h3>Website Building</h3>
+                    <p>Custom, responsive, and conversion-focused websites tailored to your business needs and brand identity.</p>
                 </div>
                 <!-- Service 2 -->
                 <div class="card service-card">
                     <div class="icon-box">
-                        <i class="fas fa-border-all"></i>
+                        <i class="fas fa-film"></i>
                     </div>
-                    <h3>Window Cleaning</h3>
-                    <p>Streak-free window cleaning for homes and offices. Enjoy the clear view with our professional service.</p>
+                    <h3>Video Editing</h3>
+                    <p>Cinematic editing, color grading, and dynamic cuts for YouTube, social media, and corporate videos.</p>
                 </div>
                 <!-- Service 3 -->
                 <div class="card service-card">
                     <div class="icon-box">
-                        <i class="fas fa-leaf"></i>
+                        <i class="fas fa-camera-retro"></i>
                     </div>
-                    <h3>Garden Maintenance</h3>
-                    <p>Lawn mowing, hedge trimming, and overall garden care to keep your outdoor spaces lush and beautiful.</p>
+                    <h3>Photography</h3>
+                    <p>High-quality portraits, event photography, and product shots to make your brand stand out visually.</p>
                 </div>
             </div>
         </div>
@@ -101,38 +155,38 @@
             <div class="grid">
                 <!-- Pricing 1 -->
                 <div class="card pricing-card">
-                    <h3>Car Washing</h3>
-                    <div class="price"><span>$</span>45<span>/wash</span></div>
+                    <h3>Video Editing</h3>
+                    <div class="price"><span>$</span>150<span>/video</span></div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Exterior Hand Wash</li>
-                        <li><i class="fas fa-check"></i> Interior Vacuum</li>
-                        <li><i class="fas fa-check"></i> Tire Dressing</li>
-                        <li><i class="fas fa-check"></i> Window Cleaning</li>
+                        <li><i class="fas fa-check"></i> Up to 10 mins length</li>
+                        <li><i class="fas fa-check"></i> Color Grading</li>
+                        <li><i class="fas fa-check"></i> Motion Graphics & Text</li>
+                        <li><i class="fas fa-check"></i> Royalty-free Music</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline btn-full">Book Now</a>
                 </div>
                 <!-- Pricing 2 -->
                 <div class="card pricing-card featured">
                     <div class="badge">Most Popular</div>
-                    <h3>Window Cleaning</h3>
-                    <div class="price"><span>$</span>99<span>/home</span></div>
+                    <h3>Web Design</h3>
+                    <div class="price"><span>$</span>299<span>/site</span></div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Up to 20 Windows</li>
-                        <li><i class="fas fa-check"></i> Inside & Outside</li>
-                        <li><i class="fas fa-check"></i> Screen Cleaning</li>
-                        <li><i class="fas fa-check"></i> Sill Wipedown</li>
+                        <li><i class="fas fa-check"></i> 5-Page Responsive Site</li>
+                        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fas fa-check"></i> Contact Form</li>
+                        <li><i class="fas fa-check"></i> 1 Year Hosting Support</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary btn-full">Book Now</a>
                 </div>
                 <!-- Pricing 3 -->
                 <div class="card pricing-card">
-                    <h3>Garden Care</h3>
-                    <div class="price"><span>$</span>60<span>/visit</span></div>
+                    <h3>Photography</h3>
+                    <div class="price"><span>$</span>200<span>/session</span></div>
                     <ul class="features">
-                        <li><i class="fas fa-check"></i> Lawn Mowing</li>
-                        <li><i class="fas fa-check"></i> Edge Trimming</li>
-                        <li><i class="fas fa-check"></i> Weed Control</li>
-                        <li><i class="fas fa-check"></i> Debris Removal</li>
+                        <li><i class="fas fa-check"></i> 2-Hour Photo Shoot</li>
+                        <li><i class="fas fa-check"></i> 30 Edited Photos</li>
+                        <li><i class="fas fa-check"></i> High-Res Downloads</li>
+                        <li><i class="fas fa-check"></i> Commercial Rights</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline btn-full">Book Now</a>
                 </div>
@@ -153,10 +207,10 @@
                     <div class="stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="review-text">"Urban Clean transformed my driveway and car. Their attention to detail is unmatched, and the team was incredibly polite and professional."</p>
+                    <p class="review-text">"Urban Digital completely transformed our online presence. Our new website is lightning fast, looks incredible, and converts way better!"</p>
                     <div class="client-info">
                         <h4>Sarah Jenkins</h4>
-                        <span>Homeowner</span>
+                        <span>E-commerce Store Owner</span>
                     </div>
                 </div>
                 <!-- Review 2 -->
@@ -164,10 +218,10 @@
                     <div class="stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="review-text">"I've used them for window cleaning for over a year. Always on time, always perfect results. I highly recommend their services to anyone."</p>
+                    <p class="review-text">"The video editing they did for our latest campaign was spectacular. The pacing, color grading, and music choice were spot on."</p>
                     <div class="client-info">
                         <h4>Mark Thompson</h4>
-                        <span>Local Business Owner</span>
+                        <span>Marketing Director</span>
                     </div>
                 </div>
                 <!-- Review 3 -->
@@ -175,10 +229,10 @@
                     <div class="stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="review-text">"My garden looks fantastic! They managed to clear out all the overgrowth and scheduled regular maintenance that fits my budget."</p>
+                    <p class="review-text">"Hired them for professional headshots and team photography. They made everyone feel comfortable and the final shots were stunning."</p>
                     <div class="client-info">
                         <h4>Emily Davis</h4>
-                        <span>Regular Client</span>
+                        <span>HR Manager</span>
                     </div>
                 </div>
             </div>
@@ -244,17 +298,18 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container footer-container">
             <div class="footer-about">
-                <h3>Urban<span>Clean</span></h3>
-                <p>Professional, reliable, and affordable cleaning and maintenance services for your home and business.</p>
+                <h3>Urban<span>Digital</span></h3>
+                <p>Professional, reliable, and cutting-edge creative services for modern businesses and independent brands.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="footer-links">
@@ -269,18 +324,15 @@
             <div class="footer-services">
                 <h4>Our Services</h4>
                 <ul>
-                    <li><a href="#services">Car Washing</a></li>
-                    <li><a href="#services">Window Cleaning</a></li>
-                    <li><a href="#services">Garden Maintenance</a></li>
+                    <li><a href="#services">Website Building</a></li>
+                    <li><a href="#services">Video Editing</a></li>
+                    <li><a href="#services">Photography</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Urban Clean Services. All rights reserved.</p>
+            <p>&copy; 2026 Urban Digital Agency. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Custom Script -->
-    <script src="script.js"></script>
 </body>
 </html>
