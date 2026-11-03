@@ -7,38 +7,45 @@
     <meta name="keywords" content="website building, web design, video editing, photography, digital agency, branding, front-end development, media production">
     <meta name="author" content="Urban Digital">
     <link rel="canonical" href="https://www.urbandigital.com/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.urbandigital.com/">
     <meta property="og:title" content="Urban Digital | Web Design, Video & Photography">
     <meta property="og:description" content="Top-rated digital agency offering professional website building, stunning video editing, and modern photography to elevate your brand's presence.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&q=80">
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.urbandigital.com/">
     <meta property="twitter:title" content="Urban Digital | Web Design, Video & Photography">
     <meta property="twitter:description" content="Top-rated digital agency offering professional website building, stunning video editing, and modern photography to elevate your brand's presence.">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-    
-    <meta name="theme-color" content="#2563eb">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&q=80">
+
+    <meta name="theme-color" content="#0F0F0D">
     <title>Urban Digital | Websites, Video Editing & Photography</title>
-    
+
+    <!-- Flag JS + motion preference before first paint (drives loader & animation states) -->
+    <script>
+        (function (d) {
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            d.className += ' js ' + (reduce ? 'reduced' : 'motion');
+        })(document.documentElement);
+    </script>
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1920&q=75">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
+    <!-- Type: Archivo (variable width) / Instrument Serif / JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <!-- Custom Assets -->
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
     <script src="script.js" defer></script>
 
     <!-- Schema.org Structured Data for Local Business SEO -->
@@ -47,291 +54,401 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Urban Digital",
-      "image": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
+      "image": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e",
       "description": "Professional web design, video editing, and photography agency.",
-      "telephone": "(555) 123-4567",
-      "email": "hello@urbandigital.com",
+      "telephone": "+31611806006",
+      "email": "noahda.c@outlook.com",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "123 Creative Street",
-        "addressLocality": "Metro City",
-        "addressRegion": "ST",
-        "postalCode": "12345",
-        "addressCountry": "US"
+        "addressRegion": "South Holland",
+        "addressCountry": "NL"
       },
       "url": "https://www.urbandigital.com",
-      "priceRange": "$$$"
+      "priceRange": "$$"
     }
     </script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Preloader: a running timecode, then the curtain lifts -->
+    <div class="loader" aria-hidden="true">
+        <div class="loader__row">
+            <span>Urban Digital</span>
+            <span>Reel — 2026</span>
+        </div>
+        <div class="loader__tc">00:00:00:00</div>
+    </div>
+
+    <div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__label"></span></div>
+    <div class="grain" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo" aria-label="Urban Digital Home">Urban<span>Digital</span></a>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact" class="btn btn-outline">Contact</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-                <i class="fas fa-bars" aria-hidden="true"></i>
+    <header class="navbar" id="navbar">
+        <a href="#home" class="logo" aria-label="Urban Digital — back to top">Urban Digital<span class="logo__tag" aria-hidden="true">(NL)</span></a>
+        <p class="nav-meta"><span class="rec-dot" aria-hidden="true"></span>South Holland — <time data-local-time>--:--</time></p>
+        <div class="nav-actions">
+            <a href="#contact" class="nav-cta" data-magnetic>Start a project</a>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+                <span class="hamburger__label" aria-hidden="true">Index</span>
+                <span class="hamburger__lines" aria-hidden="true"><i></i><i></i></span>
             </button>
+        </div>
+    </header>
+
+    <nav class="menu" id="nav-links" aria-label="Primary">
+        <ol class="menu__list">
+            <li style="--i:0"><a href="#home"><span class="menu__num">00</span><span class="menu__word">Home</span></a></li>
+            <li style="--i:1"><a href="#studio"><span class="menu__num">01</span><span class="menu__word">Studio</span></a></li>
+            <li style="--i:2"><a href="#services"><span class="menu__num">02</span><span class="menu__word">Services</span></a></li>
+            <li style="--i:3"><a href="#pricing"><span class="menu__num">03</span><span class="menu__word">Pricing</span></a></li>
+            <li style="--i:4"><a href="#testimonials"><span class="menu__num">04</span><span class="menu__word">Testimonials</span></a></li>
+            <li style="--i:5"><a href="#contact"><span class="menu__num">05</span><span class="menu__word">Contact</span></a></li>
+        </ol>
+        <div class="menu__foot">
+            <a href="mailto:noahda.c@outlook.com">noahda.c@outlook.com</a>
+            <a href="tel:+31611806006">+31 6 1180 6006</a>
+            <span>South Holland, Netherlands</span>
         </div>
     </nav>
 
-    <main>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <div class="trust-badge">
-                <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <span>Trusted by 500+ Local Customers</span>
-            </div>
-            <h1>Professional Web Design, Video & Photography</h1>
-            <p>Expert website building, cinematic video editing, and modern photography to elevate your brand and capture your audience.</p>
-            
-            <div class="hero-features">
-                <span><i class="fas fa-check-circle"></i> Custom Designs</span>
-                <span><i class="fas fa-check-circle"></i> High-Quality Media</span>
-                <span><i class="fas fa-check-circle"></i> 100% Satisfaction</span>
-            </div>
+    <main id="main">
 
+    <!-- Hero: the inline frame grows into a full-screen viewfinder on scroll -->
+    <section class="hero" id="home" data-theme="light">
+        <div class="hero__meta">
+            <span class="hide-sm">(Est. 2026)</span>
+            <span class="hero__trust">5.0 — Trusted by 500+ local customers</span>
+            <span class="hide-sm">Web / Video / Photo</span>
+        </div>
+
+        <h1 class="hero__title">
+            <span class="line"><span class="line__inner">Web design,</span></span>
+            <span class="line line--indent"><span class="line__inner"><em>video</em><span class="hero__frame" aria-hidden="true"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1920&q=75" alt="" width="1920" height="1280"></span>&amp;</span></span>
+            <span class="line line--right"><span class="line__inner">photography</span></span>
+        </h1>
+
+        <div class="hero__foot">
+            <p class="hero__lede">Expert website building, cinematic video editing, and modern photography to elevate your brand and capture your audience.</p>
+            <ul class="hero__features">
+                <li>Custom designs</li>
+                <li>High-quality media</li>
+                <li>100% satisfaction</li>
+            </ul>
             <div class="hero-btns">
-                <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-                <a href="#services" class="btn btn-secondary">View Services</a>
+                <a href="#contact" class="btn btn-primary" data-magnetic><span>Get a free quote</span></a>
+                <a href="#services" class="link-arrow">View services <span aria-hidden="true">↓</span></a>
+            </div>
+        </div>
+
+        <div class="hero__media" data-theme="dark" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1920&q=75" alt="" width="1920" height="1280">
+            <div class="viewfinder">
+                <i class="vf-corner vf-corner--tl"></i><i class="vf-corner vf-corner--tr"></i>
+                <i class="vf-corner vf-corner--bl"></i><i class="vf-corner vf-corner--br"></i>
+                <span class="vf-rec"><span class="rec-dot"></span>REC</span>
+                <span class="vf-tc" data-timecode>00:00:00:00</span>
+                <p class="vf-statement">
+                    <span class="line"><span class="line__inner">Every frame,</span></span>
+                    <span class="line"><span class="line__inner"><em>on purpose.</em></span></span>
+                </p>
+                <span class="vf-exp">ISO 400 · 1/50 · ƒ2.8</span>
+                <span class="vf-format">4K · 24 FPS</span>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services section-padding bg-light" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Top-quality services tailored to your needs</p>
+    <!-- Studio / manifesto -->
+    <section class="manifesto" id="studio" data-theme="light">
+        <div class="section-tag"><span>Sc. 01</span><span>The studio</span></div>
+        <p class="manifesto__text" data-words>
+            Most local businesses get a template and a stock photo. We give you a <em>point of view</em> — a site that loads fast and converts, a film that holds attention, and photographs that look like you <em>meant</em> them.
+        </p>
+        <div class="manifesto__stats">
+            <div class="stat">
+                <p class="stat__num"><span data-count="500">500</span>+</p>
+                <p class="stat__label">Local customers served</p>
             </div>
-            <div class="grid">
-                <!-- Service 1 -->
-                <div class="card service-card">
-                    <div class="icon-box">
-                        <i class="fas fa-laptop-code"></i>
+            <div class="stat">
+                <p class="stat__num"><span data-count="3">3</span></p>
+                <p class="stat__label">Crafts, one studio</p>
+            </div>
+            <div class="stat">
+                <p class="stat__num"><span data-count="100">100</span>%</p>
+                <p class="stat__label">Satisfaction</p>
+            </div>
+        </div>
+        <figure class="manifesto__img" data-reveal>
+            <img data-parallax src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=75" alt="A clapperboard held up against a desert sky before a take" width="1000" height="1250" loading="lazy">
+            <figcaption>Fig. 01 — Before the take</figcaption>
+        </figure>
+    </section>
+
+    <!-- Services: a horizontal film strip on desktop -->
+    <section class="services" id="services" data-theme="dark">
+        <div class="services__pin">
+            <div class="services__track">
+                <header class="services__intro">
+                    <div class="section-tag section-tag--dark"><span>Sc. 02</span><span>Services</span></div>
+                    <h2 class="services__title split-lines">
+                        <span class="line"><span class="line__inner">Three crafts,</span></span>
+                        <span class="line"><span class="line__inner"><em>one eye.</em></span></span>
+                    </h2>
+                    <p class="services__lede">Top-quality services tailored to your needs — designed, shot and cut under one roof.</p>
+                    <p class="services__hint" aria-hidden="true">Keep scrolling <span>→</span></p>
+                </header>
+
+                <article class="service service--a service-card">
+                    <span class="service__tc" aria-hidden="true">TC 00:00:04:12</span>
+                    <span class="service__num" aria-hidden="true">01</span>
+                    <figure class="service__media">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=75" alt="A hand holding a phone showing a clean app dashboard in front of a design workstation" width="1400" height="1050" loading="lazy">
+                    </figure>
+                    <div class="service__body">
+                        <h3>Website building</h3>
+                        <p>Custom, responsive, and conversion-focused websites tailored to your business needs and brand identity.</p>
+                        <ul class="service__tags"><li>Custom</li><li>Responsive</li><li>Conversion-focused</li></ul>
+                        <a href="#pricing" class="link-arrow">From $299 / site <span aria-hidden="true">→</span></a>
                     </div>
-                    <h3>Website Building</h3>
-                    <p>Custom, responsive, and conversion-focused websites tailored to your business needs and brand identity.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="card service-card">
-                    <div class="icon-box">
-                        <i class="fas fa-film"></i>
+                </article>
+
+                <article class="service service--b service-card">
+                    <span class="service__tc" aria-hidden="true">TC 00:00:09:03</span>
+                    <span class="service__num" aria-hidden="true">02</span>
+                    <figure class="service__media">
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=75" alt="A video editing timeline with colour-coded clips and audio tracks" width="1600" height="1067" loading="lazy">
+                    </figure>
+                    <div class="service__body">
+                        <h3>Video editing</h3>
+                        <p>Cinematic editing, color grading, and dynamic cuts for YouTube, social media, and corporate videos.</p>
+                        <ul class="service__tags"><li>Cinematic cuts</li><li>Color grading</li><li>YouTube &amp; social</li></ul>
+                        <a href="#pricing" class="link-arrow">From $150 / video <span aria-hidden="true">→</span></a>
                     </div>
-                    <h3>Video Editing</h3>
-                    <p>Cinematic editing, color grading, and dynamic cuts for YouTube, social media, and corporate videos.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="card service-card">
-                    <div class="icon-box">
-                        <i class="fas fa-camera-retro"></i>
+                </article>
+
+                <article class="service service--c service-card">
+                    <span class="service__tc" aria-hidden="true">TC 00:00:15:21</span>
+                    <span class="service__num" aria-hidden="true">03</span>
+                    <figure class="service__media">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=75" alt="A mirrorless camera and two prime lenses laid out on a dark table" width="1000" height="1250" loading="lazy">
+                    </figure>
+                    <div class="service__body">
+                        <h3>Photography</h3>
+                        <p>High-quality portraits, event photography, and product shots to make your brand stand out visually.</p>
+                        <ul class="service__tags"><li>Portraits</li><li>Events</li><li>Product</li></ul>
+                        <a href="#pricing" class="link-arrow">From $200 / session <span aria-hidden="true">→</span></a>
                     </div>
-                    <h3>Photography</h3>
-                    <p>High-quality portraits, event photography, and product shots to make your brand stand out visually.</p>
+                </article>
+
+                <div class="services__outro">
+                    <p>Not sure which one you need?</p>
+                    <a href="#contact" class="services__outro-link" data-cursor="Talk">Let's figure it out <span aria-hidden="true">→</span></a>
                 </div>
             </div>
+            <div class="services__progress" aria-hidden="true"><span></span></div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing section-padding" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Simple Pricing</h2>
-                <p>Transparent rates with no hidden fees</p>
-            </div>
-            <div class="grid">
-                <!-- Pricing 1 -->
-                <div class="card pricing-card">
-                    <h3>Video Editing</h3>
-                    <div class="price"><span>$</span>150<span>/video</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> Up to 10 mins length</li>
-                        <li><i class="fas fa-check"></i> Color Grading</li>
-                        <li><i class="fas fa-check"></i> Motion Graphics & Text</li>
-                        <li><i class="fas fa-check"></i> Royalty-free Music</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-full">Book Now</a>
-                </div>
-                <!-- Pricing 2 -->
-                <div class="card pricing-card featured">
-                    <div class="badge">Most Popular</div>
-                    <h3>Web Design</h3>
-                    <div class="price"><span>$</span>299<span>/site</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 5-Page Responsive Site</li>
-                        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
-                        <li><i class="fas fa-check"></i> Contact Form</li>
-                        <li><i class="fas fa-check"></i> 1 Year Hosting Support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary btn-full">Book Now</a>
-                </div>
-                <!-- Pricing 3 -->
-                <div class="card pricing-card">
-                    <h3>Photography</h3>
-                    <div class="price"><span>$</span>200<span>/session</span></div>
-                    <ul class="features">
-                        <li><i class="fas fa-check"></i> 2-Hour Photo Shoot</li>
-                        <li><i class="fas fa-check"></i> 30 Edited Photos</li>
-                        <li><i class="fas fa-check"></i> High-Res Downloads</li>
-                        <li><i class="fas fa-check"></i> Commercial Rights</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline btn-full">Book Now</a>
-                </div>
-            </div>
+    <!-- Pricing: an editorial rate card -->
+    <section class="pricing" id="pricing" data-theme="light">
+        <div class="section-tag"><span>Sc. 03</span><span>Rates</span></div>
+        <div class="pricing__head">
+            <h2 class="pricing__title split-lines">
+                <span class="line"><span class="line__inner">Simple pricing.</span></span>
+                <span class="line"><span class="line__inner"><em>No hidden fees.</em></span></span>
+            </h2>
+            <p class="pricing__note">Transparent rates. Pick a package and we'll pre-fill the brief for you.</p>
+        </div>
+
+        <div class="rates">
+            <article class="rate pricing-card" data-cursor="Book">
+                <span class="rate__idx" aria-hidden="true">A</span>
+                <h3 class="rate__name">Video editing</h3>
+                <ul class="rate__features">
+                    <li>Up to 10 mins length</li>
+                    <li>Color grading</li>
+                    <li>Motion graphics &amp; text</li>
+                    <li>Royalty-free music</li>
+                </ul>
+                <p class="rate__price"><span class="rate__cur">$</span>150<span class="rate__unit">/video</span></p>
+                <a href="#contact" class="rate__book" data-package="Video Editing ($150/video)">Book now <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="rate rate--featured pricing-card featured" data-cursor="Book">
+                <span class="rate__idx" aria-hidden="true">B</span>
+                <h3 class="rate__name">Web design <span class="visually-hidden">(most popular)</span></h3>
+                <ul class="rate__features">
+                    <li>5-page responsive site</li>
+                    <li>Basic SEO setup</li>
+                    <li>Contact form</li>
+                    <li>1 year hosting support</li>
+                </ul>
+                <p class="rate__price"><span class="rate__cur">$</span>299<span class="rate__unit">/site</span></p>
+                <a href="#contact" class="rate__book" data-package="Web Design ($299/site)">Book now <span aria-hidden="true">→</span></a>
+                <span class="stamp" aria-hidden="true">
+                    <svg viewBox="0 0 100 100">
+                        <defs><path id="stampPath" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
+                        <text><textPath href="#stampPath" textLength="230" lengthAdjust="spacing">Most popular · Most popular · </textPath></text>
+                                            </svg>
+                </span>
+            </article>
+
+            <article class="rate pricing-card" data-cursor="Book">
+                <span class="rate__idx" aria-hidden="true">C</span>
+                <h3 class="rate__name">Photography</h3>
+                <ul class="rate__features">
+                    <li>2-hour photo shoot</li>
+                    <li>30 edited photos</li>
+                    <li>High-res downloads</li>
+                    <li>Commercial rights</li>
+                </ul>
+                <p class="rate__price"><span class="rate__cur">$</span>200<span class="rate__unit">/session</span></p>
+                <a href="#contact" class="rate__book" data-package="Photography ($200/session)">Book now <span aria-hidden="true">→</span></a>
+            </article>
+        </div>
+
+        <div class="rates__preview" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=70" alt="" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=70" alt="" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=70" alt="" loading="lazy">
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials section-padding bg-light" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Clients Say</h2>
-                <p>Don't just take our word for it</p>
+    <!-- Tilted band bridging light → dark -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee__inner">
+            <div class="marquee__group">
+                <span>Websites</span><i class="marquee__dot"></i>
+                <span><em>Video editing</em></span><i class="marquee__dot"></i>
+                <span>Photography</span><i class="marquee__dot"></i>
+                <span><em>South Holland</em></span><i class="marquee__dot"></i>
             </div>
-            <div class="grid">
-                <!-- Review 1 -->
-                <div class="card testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"Urban Digital completely transformed our online presence. Our new website is lightning fast, looks incredible, and converts way better!"</p>
-                    <div class="client-info">
-                        <h4>Sarah Jenkins</h4>
-                        <span>E-commerce Store Owner</span>
-                    </div>
-                </div>
-                <!-- Review 2 -->
-                <div class="card testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="review-text">"The video editing they did for our latest campaign was spectacular. The pacing, color grading, and music choice were spot on."</p>
-                    <div class="client-info">
-                        <h4>Mark Thompson</h4>
-                        <span>Marketing Director</span>
-                    </div>
-                </div>
-                <!-- Review 3 -->
-                <div class="card testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <p class="review-text">"Hired them for professional headshots and team photography. They made everyone feel comfortable and the final shots were stunning."</p>
-                    <div class="client-info">
-                        <h4>Emily Davis</h4>
-                        <span>HR Manager</span>
-                    </div>
-                </div>
+            <div class="marquee__group">
+                <span>Websites</span><i class="marquee__dot"></i>
+                <span><em>Video editing</em></span><i class="marquee__dot"></i>
+                <span>Photography</span><i class="marquee__dot"></i>
+                <span><em>South Holland</em></span><i class="marquee__dot"></i>
             </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials" data-theme="dark">
+        <div class="testimonials__head">
+            <div class="section-tag section-tag--dark"><span>Sc. 04</span><span>Clients</span></div>
+            <h2 class="testimonials__title">What our clients say <em>— don't just take our word for it.</em></h2>
+        </div>
+
+        <div class="quotes" aria-live="polite">
+            <figure class="quote testimonial-card is-active">
+                <blockquote><p>“Urban Digital completely transformed our online presence. Our new website is lightning fast, looks incredible, and converts way better!”</p></blockquote>
+                <figcaption><span class="quote__name">Sarah Jenkins</span><span>E-commerce Store Owner</span><span class="quote__rating">Rated 5.0 / 5</span></figcaption>
+            </figure>
+            <figure class="quote testimonial-card">
+                <blockquote><p>“The video editing they did for our latest campaign was spectacular. The pacing, color grading, and music choice were spot on.”</p></blockquote>
+                <figcaption><span class="quote__name">Mark Thompson</span><span>Marketing Director</span><span class="quote__rating">Rated 5.0 / 5</span></figcaption>
+            </figure>
+            <figure class="quote testimonial-card">
+                <blockquote><p>“Hired them for professional headshots and team photography. They made everyone feel comfortable and the final shots were stunning.”</p></blockquote>
+                <figcaption><span class="quote__name">Emily Davis</span><span>HR Manager</span><span class="quote__rating">Rated 4.5 / 5</span></figcaption>
+            </figure>
+        </div>
+
+        <div class="quotes__nav" hidden>
+            <button type="button" class="quotes__btn" data-dir="-1" aria-label="Previous testimonial" data-magnetic>←</button>
+            <span class="quotes__count"><span data-current>01</span> / <span data-total>03</span></span>
+            <button type="button" class="quotes__btn" data-dir="1" aria-label="Next testimonial" data-magnetic>→</button>
+            <span class="quotes__bar" aria-hidden="true"><span></span></span>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact section-padding" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Get in Touch</h2>
-                <p>Request a quote or ask us a question</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>We're ready to help you with your cleaning and maintenance needs. Reach out to us today!</p>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Netherlands south-holland</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>(+31)611806006)</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>noahda.c@outlook.com</p>
-                        </div>
-                    </div>
+    <!-- Contact -->
+    <section class="contact" id="contact" data-theme="light">
+        <div class="section-tag"><span>Sc. 05</span><span>Contact</span></div>
+        <h2 class="contact__title split-lines">
+            <span class="line"><span class="line__inner">Get in touch.</span></span>
+            <span class="line"><span class="line__inner"><em>Make it worth</em></span></span>
+            <span class="line"><span class="line__inner"><em>watching.</em></span></span>
+        </h2>
+
+        <div class="contact-grid">
+            <aside class="contact-info">
+                <p class="contact-info__lede">Request a quote or ask us a question. We're ready to help with your website, video and photography needs — reach out today.</p>
+                <dl class="contact-info__list">
+                    <div><dt>Location</dt><dd>South Holland, Netherlands</dd></div>
+                    <div><dt>Phone</dt><dd><a href="tel:+31611806006">+31 6 1180 6006</a></dd></div>
+                    <div><dt>Email</dt><dd><a href="mailto:noahda.c@outlook.com">noahda.c@outlook.com</a></dd></div>
+                </dl>
+            </aside>
+
+            <form id="contactForm" class="contact-form" novalidate>
+                <p class="form-sentence">
+                    Hi, my name is
+                    <span class="form-group field field--inline">
+                        <label for="name" class="visually-hidden">Full name</label>
+                        <input type="text" id="name" name="name" placeholder="your name" autocomplete="name" aria-describedby="nameError">
+                        <span class="error-msg" id="nameError">Name is required</span>
+                    </span>
+                    and you can reach me at
+                    <span class="form-group field field--inline field--email">
+                        <label for="email" class="visually-hidden">Email address</label>
+                        <input type="email" id="email" name="email" placeholder="your email" autocomplete="email" aria-describedby="emailError">
+                        <span class="error-msg" id="emailError">Valid email is required</span>
+                    </span>.
+                </p>
+                <div class="form-group field field--block">
+                    <label for="message">Here's what I have in mind</label>
+                    <textarea id="message" name="message" rows="4" placeholder="A new website, a launch film, team portraits…" aria-describedby="messageError"></textarea>
+                    <span class="error-msg" id="messageError">Message cannot be empty</span>
                 </div>
-                
-                <div class="contact-form-wrapper">
-                    <form id="contactForm" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="John Doe">
-                            <span class="error-msg" id="nameError">Name is required</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="john@example.com">
-                            <span class="error-msg" id="emailError">Valid email is required</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="5" placeholder="How can we help you?"></textarea>
-                            <span class="error-msg" id="messageError">Message cannot be empty</span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Send Message</button>
-                        <div class="success-msg" id="successMsg">Thank you! Your message has been sent.</div>
-                    </form>
+                <div class="form-submit">
+                    <button type="submit" class="btn-send" id="submitBtn" data-magnetic><span>Send message</span></button>
+                    <p class="success-msg" id="successMsg" role="status" hidden>Thank you! Your message has been sent.</p>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-about">
-                <h3>Urban<span>Digital</span></h3>
-                <p>Professional, reliable, and cutting-edge creative services for modern businesses and independent brands.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+    <footer class="footer" data-theme="dark">
+        <div class="footer__top">
+            <p class="footer__about">Professional, reliable, and cutting-edge creative services for modern businesses and <em>independent brands.</em></p>
+            <div class="footer__cols">
+                <div>
+                    <h4>Index</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Website building</a></li>
+                        <li><a href="#services">Video editing</a></li>
+                        <li><a href="#services">Photography</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">Instagram <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="#">Facebook <span aria-hidden="true">↗</span></a></li>
+                        <li><a href="#">Twitter <span aria-hidden="true">↗</span></a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-services">
-                <h4>Our Services</h4>
-                <ul>
-                    <li><a href="#services">Website Building</a></li>
-                    <li><a href="#services">Video Editing</a></li>
-                    <li><a href="#services">Photography</a></li>
-                </ul>
-            </div>
+        </div>
+        <div class="footer__brand">
+            <a href="#home" class="footer__wordmark" aria-label="Urban Digital — back to top">Urban Digital</a>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Urban Digital Agency. All rights reserved.</p>
+            <p>Local time <time data-local-time>--:--</time></p>
+            <a href="#home" class="footer__top-link">Back to top <span aria-hidden="true">↑</span></a>
         </div>
     </footer>
 </body>
