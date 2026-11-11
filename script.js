@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Visual Dept — interactions
+   Visual Depth — interactions
    Core behaviour (menu, anchors, form, slider, clock) works without GSAP.
    Motion is layered on only when GSAP loaded AND the user allows motion.
    ========================================================================== */
