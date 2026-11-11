@@ -143,7 +143,7 @@
         const submitLabel = $('span', submitBtn);
         let hideTimer;
 
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             let firstInvalid = null;
 
@@ -159,22 +159,35 @@
                 return;
             }
 
-            // Here you would normally send the data to a backend via fetch/XHR.
-            // Simulating a successful request:
             submitBtn.disabled = true;
             submitLabel.textContent = 'Sending…';
+            clearTimeout(hideTimer);
+            successMsg.hidden = true;
 
-            setTimeout(() => {
-                successMsg.hidden = false;
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { Accept: 'application/json' },
+                    body: new FormData(form),
+                });
+                if (!res.ok) throw new Error(`Send failed: ${res.status}`);
+
+                successMsg.textContent = 'Thank you! Your message has been sent.';
+                successMsg.classList.remove('is-error');
                 form.reset();
                 messageField.dataset.prefilled = 'false';
                 rules.forEach(({ field }) => field.removeAttribute('aria-invalid'));
-                submitBtn.disabled = false;
-                submitLabel.textContent = 'Send message';
-
-                clearTimeout(hideTimer);
                 hideTimer = setTimeout(() => { successMsg.hidden = true; }, 5000);
-            }, 1500);
+            } catch (err) {
+                // Keep the visitor's text in the form and leave this message up.
+                console.error(err);
+                successMsg.textContent = 'Sorry, sending failed. Please email or call me directly.';
+                successMsg.classList.add('is-error');
+            }
+
+            successMsg.hidden = false;
+            submitBtn.disabled = false;
+            submitLabel.textContent = 'Send message';
         });
 
         $$('input, textarea', form).forEach((input) => {

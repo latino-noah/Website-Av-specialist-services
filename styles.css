@@ -792,6 +792,7 @@ a.link-arrow[href="#services"]:hover span { transform: translateY(4px); }
 }
 .success-msg::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--rec); }
 .success-msg[hidden] { display: none; }
+.success-msg.is-error { color: var(--rec-text); }
 
 /* ---------- Footer ---------- */
 .footer {
