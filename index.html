@@ -29,7 +29,9 @@
     <script>
         (function (d) {
             var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            d.className += ' js ' + (reduce ? 'reduced' : 'motion');
+            var seen = false;
+            try { seen = sessionStorage.getItem('vd-intro') === '1'; } catch (e) {}
+            d.className += ' js ' + (reduce ? 'reduced' : 'motion') + (seen ? ' intro-seen' : '');
         })(document.documentElement);
     </script>
 
@@ -86,24 +88,31 @@
     <!-- Navigation -->
     <header class="navbar" id="navbar">
         <a href="#home" class="logo" aria-label="Visual Dept — back to top">Visual Dept<span class="logo__tag" aria-hidden="true">(NL)</span></a>
-        <p class="nav-meta"><span class="rec-dot" aria-hidden="true"></span>South Holland — <time data-local-time>--:--</time></p>
+        <nav class="nav-primary" aria-label="Main">
+            <a href="#studio">Studio</a>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#testimonials">Reviews</a>
+        </nav>
         <div class="nav-actions">
-            <a href="#contact" class="nav-cta" data-magnetic>Start a project</a>
+            <a href="#contact" class="nav-cta" data-magnetic>Start a project <span aria-hidden="true">→</span></a>
             <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
-                <span class="hamburger__label" aria-hidden="true">Index</span>
+                <span class="hamburger__label" aria-hidden="true">Menu</span>
                 <span class="hamburger__lines" aria-hidden="true"><i></i><i></i></span>
             </button>
         </div>
     </header>
 
-    <nav class="menu" id="nav-links" aria-label="Primary">
+    <nav class="menu" id="nav-links" aria-label="Mobile menu">
         <ol class="menu__list">
             <li style="--i:0"><a href="#home"><span class="menu__num">00</span><span class="menu__word">Home</span></a></li>
             <li style="--i:1"><a href="#studio"><span class="menu__num">01</span><span class="menu__word">Studio</span></a></li>
             <li style="--i:2"><a href="#services"><span class="menu__num">02</span><span class="menu__word">Services</span></a></li>
-            <li style="--i:3"><a href="#pricing"><span class="menu__num">03</span><span class="menu__word">Pricing</span></a></li>
-            <li style="--i:4"><a href="#testimonials"><span class="menu__num">04</span><span class="menu__word">Testimonials</span></a></li>
-            <li style="--i:5"><a href="#contact"><span class="menu__num">05</span><span class="menu__word">Contact</span></a></li>
+            <li style="--i:3"><a href="#process"><span class="menu__num">03</span><span class="menu__word">Process</span></a></li>
+            <li style="--i:4"><a href="#pricing"><span class="menu__num">04</span><span class="menu__word">Pricing</span></a></li>
+            <li style="--i:5"><a href="#testimonials"><span class="menu__num">05</span><span class="menu__word">Reviews</span></a></li>
+            <li style="--i:6"><a href="#contact"><span class="menu__num">06</span><span class="menu__word">Contact</span></a></li>
         </ol>
         <div class="menu__foot">
             <a href="mailto:noahda.c@outlook.com">noahda.c@outlook.com</a>
@@ -117,8 +126,8 @@
     <!-- Hero: the inline frame grows into a full-screen viewfinder on scroll -->
     <section class="hero" id="home" data-theme="light">
         <div class="hero__meta">
-            <span class="hide-sm">(Est. 2026)</span>
-            <span class="hero__trust">5.0 — Trusted by 500+ local customers</span>
+            <span class="hero__loc hide-sm"><span class="rec-dot" aria-hidden="true"></span>South Holland — <time data-local-time>--:--</time></span>
+            <span class="hero__trust">★ 5.0 — Trusted by 500+ local customers</span>
             <span class="hide-sm">Web / Video / Photo</span>
         </div>
 
@@ -160,7 +169,7 @@
 
     <!-- Studio / manifesto -->
     <section class="manifesto" id="studio" data-theme="light">
-        <div class="section-tag"><span>Sc. 01</span><span>The studio</span></div>
+        <div class="section-tag"><span>01</span><span>Studio</span></div>
         <p class="manifesto__text" data-words>
             Most local businesses get a template and a stock photo. We give you a <em>point of view</em> — a site that loads fast and converts, a film that holds attention, and photographs that look like you <em>meant</em> them.
         </p>
@@ -189,7 +198,7 @@
         <div class="services__pin">
             <div class="services__track">
                 <header class="services__intro">
-                    <div class="section-tag section-tag--dark"><span>Sc. 02</span><span>Services</span></div>
+                    <div class="section-tag section-tag--dark"><span>02</span><span>Services</span></div>
                     <h2 class="services__title split-lines">
                         <span class="line"><span class="line__inner">Three crafts,</span></span>
                         <span class="line"><span class="line__inner"><em>one eye.</em></span></span>
@@ -208,7 +217,7 @@
                         <h3>Website building</h3>
                         <p>Custom, responsive, and conversion-focused websites tailored to your business needs and brand identity.</p>
                         <ul class="service__tags"><li>Custom</li><li>Responsive</li><li>Conversion-focused</li></ul>
-                        <a href="#pricing" class="link-arrow">From $299 / site <span aria-hidden="true">→</span></a>
+                        <a href="#pricing" class="link-arrow">From €299 / site <span aria-hidden="true">→</span></a>
                     </div>
                 </article>
 
@@ -222,7 +231,7 @@
                         <h3>Video editing</h3>
                         <p>Cinematic editing, color grading, and dynamic cuts for YouTube, social media, and corporate videos.</p>
                         <ul class="service__tags"><li>Cinematic cuts</li><li>Color grading</li><li>YouTube &amp; social</li></ul>
-                        <a href="#pricing" class="link-arrow">From $150 / video <span aria-hidden="true">→</span></a>
+                        <a href="#pricing" class="link-arrow">From €150 / video <span aria-hidden="true">→</span></a>
                     </div>
                 </article>
 
@@ -236,7 +245,7 @@
                         <h3>Photography</h3>
                         <p>High-quality portraits, event photography, and product shots to make your brand stand out visually.</p>
                         <ul class="service__tags"><li>Portraits</li><li>Events</li><li>Product</li></ul>
-                        <a href="#pricing" class="link-arrow">From $200 / session <span aria-hidden="true">→</span></a>
+                        <a href="#pricing" class="link-arrow">From €200 / session <span aria-hidden="true">→</span></a>
                     </div>
                 </article>
 
@@ -249,9 +258,43 @@
         </div>
     </section>
 
+    <!-- Process: how a project runs, in four steps -->
+    <section class="process" id="process" data-theme="light">
+        <div class="section-tag"><span>03</span><span>Process</span></div>
+        <div class="process__head">
+            <h2 class="process__title split-lines">
+                <span class="line"><span class="line__inner">How it works.</span></span>
+                <span class="line"><span class="line__inner"><em>Four steps, no surprises.</em></span></span>
+            </h2>
+            <p class="process__note">From the first call to the final file, you always know what happens next and what it costs.</p>
+        </div>
+        <ol class="steps">
+            <li class="step">
+                <span class="step__num" aria-hidden="true">01</span>
+                <h3>Intro call</h3>
+                <p>Tell us about your business, your goals and your deadline. Free and without obligation.</p>
+            </li>
+            <li class="step">
+                <span class="step__num" aria-hidden="true">02</span>
+                <h3>Proposal</h3>
+                <p>You get a clear plan and a fixed price, so you know exactly what you're getting.</p>
+            </li>
+            <li class="step">
+                <span class="step__num" aria-hidden="true">03</span>
+                <h3>Create</h3>
+                <p>We design, shoot or edit, and share progress so you can give feedback along the way.</p>
+            </li>
+            <li class="step">
+                <span class="step__num" aria-hidden="true">04</span>
+                <h3>Deliver</h3>
+                <p>You receive the final files or your site goes live, and we stay available for support.</p>
+            </li>
+        </ol>
+    </section>
+
     <!-- Pricing: an editorial rate card -->
     <section class="pricing" id="pricing" data-theme="light">
-        <div class="section-tag"><span>Sc. 03</span><span>Rates</span></div>
+        <div class="section-tag"><span>04</span><span>Pricing</span></div>
         <div class="pricing__head">
             <h2 class="pricing__title split-lines">
                 <span class="line"><span class="line__inner">Simple pricing.</span></span>
@@ -270,8 +313,8 @@
                     <li>Motion graphics &amp; text</li>
                     <li>Royalty-free music</li>
                 </ul>
-                <p class="rate__price"><span class="rate__cur">$</span>150<span class="rate__unit">/video</span></p>
-                <a href="#contact" class="rate__book" data-package="Video Editing ($150/video)">Book now <span aria-hidden="true">→</span></a>
+                <p class="rate__price"><span class="rate__cur">€</span>150<span class="rate__unit">/video</span></p>
+                <a href="#contact" class="rate__book" data-package="Video Editing (€150/video)" data-service="Video editing">Book now <span aria-hidden="true">→</span></a>
             </article>
 
             <article class="rate rate--featured pricing-card featured" data-cursor="Book">
@@ -283,8 +326,8 @@
                     <li>Contact form</li>
                     <li>1 year hosting support</li>
                 </ul>
-                <p class="rate__price"><span class="rate__cur">$</span>299<span class="rate__unit">/site</span></p>
-                <a href="#contact" class="rate__book" data-package="Web Design ($299/site)">Book now <span aria-hidden="true">→</span></a>
+                <p class="rate__price"><span class="rate__cur">€</span>299<span class="rate__unit">/site</span></p>
+                <a href="#contact" class="rate__book" data-package="Web Design (€299/site)" data-service="Website">Book now <span aria-hidden="true">→</span></a>
                 <span class="stamp" aria-hidden="true">
                     <svg viewBox="0 0 100 100">
                         <defs><path id="stampPath" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
@@ -302,9 +345,14 @@
                     <li>High-res downloads</li>
                     <li>Commercial rights</li>
                 </ul>
-                <p class="rate__price"><span class="rate__cur">$</span>200<span class="rate__unit">/session</span></p>
-                <a href="#contact" class="rate__book" data-package="Photography ($200/session)">Book now <span aria-hidden="true">→</span></a>
+                <p class="rate__price"><span class="rate__cur">€</span>200<span class="rate__unit">/session</span></p>
+                <a href="#contact" class="rate__book" data-package="Photography (€200/session)" data-service="Photography">Book now <span aria-hidden="true">→</span></a>
             </article>
+        </div>
+
+        <div class="pricing__foot">
+            <p>Need a combination, or something bigger? We'll put together a custom quote.</p>
+            <a href="#contact" class="link-arrow" data-service="Other / not sure">Ask for a custom quote <span aria-hidden="true">→</span></a>
         </div>
 
         <div class="rates__preview" aria-hidden="true">
@@ -335,7 +383,7 @@
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials" data-theme="dark">
         <div class="testimonials__head">
-            <div class="section-tag section-tag--dark"><span>Sc. 04</span><span>Clients</span></div>
+            <div class="section-tag section-tag--dark"><span>05</span><span>Reviews</span></div>
             <h2 class="testimonials__title">What our clients say <em>— don't just take our word for it.</em></h2>
         </div>
 
@@ -364,7 +412,7 @@
 
     <!-- Contact -->
     <section class="contact" id="contact" data-theme="light">
-        <div class="section-tag"><span>Sc. 05</span><span>Contact</span></div>
+        <div class="section-tag"><span>06</span><span>Contact</span></div>
         <h2 class="contact__title split-lines">
             <span class="line"><span class="line__inner">Get in touch.</span></span>
             <span class="line"><span class="line__inner"><em>Make it worth</em></span></span>
@@ -399,6 +447,15 @@
                         <span class="error-msg" id="emailError">Valid email is required</span>
                     </span>.
                 </p>
+                <fieldset class="form-services">
+                    <legend>What can we help with?</legend>
+                    <div class="chips">
+                        <label class="chip"><input type="radio" name="service" value="Website"><span>Website</span></label>
+                        <label class="chip"><input type="radio" name="service" value="Video editing"><span>Video editing</span></label>
+                        <label class="chip"><input type="radio" name="service" value="Photography"><span>Photography</span></label>
+                        <label class="chip"><input type="radio" name="service" value="Other / not sure"><span>Other / not sure</span></label>
+                    </div>
+                </fieldset>
                 <div class="form-group field field--block">
                     <label for="message">Here's what I have in mind</label>
                     <textarea id="message" name="message" rows="4" placeholder="A new website, a launch film, team portraits…" aria-describedby="messageError"></textarea>
@@ -419,11 +476,13 @@
             <p class="footer__about">Professional, reliable, and cutting-edge creative services for modern businesses and <em>independent brands.</em></p>
             <div class="footer__cols">
                 <div>
-                    <h4>Index</h4>
+                    <h4>Menu</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
+                        <li><a href="#studio">Studio</a></li>
                         <li><a href="#services">Services</a></li>
+                        <li><a href="#process">Process</a></li>
                         <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>

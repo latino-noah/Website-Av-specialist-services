@@ -15,7 +15,13 @@
     const motionOK = hasGSAP && !reduceMotion;
 
     const navbar = $('#navbar');
-    const loader = $('.loader');
+    let loader = $('.loader');
+
+    // The intro plays once per visit; returning to the page skips straight to content
+    if (loader && root.classList.contains('intro-seen')) {
+        loader.remove();
+        loader = null;
+    }
 
     if (!motionOK) {
         root.classList.remove('motion');
@@ -38,7 +44,7 @@
         root.classList.toggle('menu-open', open);
         hamburger.setAttribute('aria-expanded', String(open));
         hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        hamburgerLabel.textContent = open ? 'Close' : 'Index';
+        hamburgerLabel.textContent = open ? 'Close' : 'Menu';
         outside.forEach((el) => { el.inert = open; });
         navbar.classList.remove('is-hidden');
         if (open) $('a', menu).focus({ preventScroll: true });
@@ -52,6 +58,25 @@
             hamburger.focus();
         }
     });
+    // The overlay menu only exists below the desktop breakpoint
+    const desktopNav = window.matchMedia('(min-width: 1000px)');
+    desktopNav.addEventListener('change', (e) => { if (e.matches && isMenuOpen()) setMenu(false); });
+
+    // Highlight the section currently in the middle of the viewport
+    const navLinks = $$('.nav-primary a, .menu__list a');
+    let activeId = null;
+    const updateActive = () => {
+        const stack = document.elementsFromPoint(window.innerWidth / 2, window.innerHeight / 2);
+        const hit = stack.find((el) => !navbar.contains(el) && !menu.contains(el));
+        const section = hit && hit.closest('section[id]');
+        const id = section ? section.id : null;
+        if (id === activeId) return;
+        activeId = id;
+        navLinks.forEach((a) => {
+            if (a.getAttribute('href') === `#${id}`) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+        });
+    };
 
     // Header theme: sample what sits under the bar (clip-path aware, so the
     // hero's expanding image flips it to light text exactly when it covers).
@@ -72,11 +97,13 @@
             if (!isMenuOpen()) navbar.classList.toggle('is-hidden', y > lastY && y > 400);
             lastY = y;
             updateNavTheme();
+            updateActive();
             ticking = false;
         });
     }, { passive: true });
-    window.addEventListener('resize', updateNavTheme);
+    window.addEventListener('resize', () => { updateNavTheme(); updateActive(); });
     updateNavTheme();
+    updateActive();
 
     /* ------------------------------------------------------------------
        2. Anchor scrolling (pin-aware, no CSS smooth-scroll conflicts)
@@ -121,6 +148,14 @@
     const form = $('#contactForm');
     const successMsg = $('#successMsg');
     const messageField = $('#message');
+
+    // "Book now" / "custom quote" links pre-select the matching service chip
+    $$('[data-service]').forEach((el) => {
+        el.addEventListener('click', () => {
+            const radio = $$('input[name="service"]', form).find((r) => r.value === el.dataset.service);
+            if (radio) radio.checked = true;
+        });
+    });
 
     $$('[data-package]').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -334,15 +369,16 @@
         const counter = { f: 0 };
         intro
             .to(counter, {
-                f: 48, duration: 1.3, ease: 'power2.inOut',
+                f: 48, duration: 0.9, ease: 'power2.inOut',
                 onUpdate: () => { tc.textContent = toTimecode(Math.round(counter.f)); },
             })
-            .to(loader, { clipPath: 'inset(0% 0% 100% 0%)', duration: 1, ease: 'expo.inOut' }, '+=0.1')
+            .to(loader, { clipPath: 'inset(0% 0% 100% 0%)', duration: 0.85, ease: 'expo.inOut' }, '+=0.05')
             .add(() => {
                 root.classList.remove('is-loading');
                 loader.remove();
+                try { sessionStorage.setItem('vd-intro', '1'); } catch (err) { /* storage blocked */ }
                 ScrollTrigger.refresh();
-            }, '-=0.35');
+            }, '-=0.3');
     }
     intro
         .to(heroLines, { yPercent: 0, duration: 1.4, stagger: 0.09 }, loader ? '-=0.55' : 0)
@@ -384,7 +420,7 @@
         scrollTrigger: {
             trigger: hero,
             start: 'top top',
-            end: '+=140%',
+            end: '+=100%',
             pin: true,
             scrub: 0.7,
             invalidateOnRefresh: true,
@@ -554,6 +590,17 @@
         });
     });
 
+    /* ---------- Process: the rule draws across, steps follow ---------- */
+    const steps = $('.steps');
+    gsap.fromTo(steps, { '--p': 0 }, {
+        '--p': 1, ease: 'none',
+        scrollTrigger: { trigger: steps, start: 'top 85%', end: 'top 35%', scrub: true },
+    });
+    gsap.from($$('.step', steps), {
+        y: 50, autoAlpha: 0, duration: 1.1, stagger: 0.12, ease: 'expo.out',
+        scrollTrigger: { trigger: steps, start: 'top 80%' },
+    });
+
     /* ---------- Pricing: rows enter, image preview follows the pointer ---------- */
     const rates = $$('.rate');
     gsap.from(rates, {
@@ -601,7 +648,7 @@
         scrollTrigger: { trigger: '.quotes', start: 'top 80%' },
     });
 
-    gsap.from('.contact-info, .form-sentence, .field--block, .form-submit', {
+    gsap.from('.contact-info, .form-sentence, .form-services, .field--block, .form-submit', {
         y: 50, autoAlpha: 0, duration: 1.1, stagger: 0.1, ease: 'expo.out',
         scrollTrigger: { trigger: '.contact-grid', start: 'top 96%' },
     });
