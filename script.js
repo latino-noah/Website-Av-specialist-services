@@ -277,6 +277,49 @@
     }
 
     /* ------------------------------------------------------------------
+       5b. Team contact sheets — click/tap the photo or use the frame buttons
+       ------------------------------------------------------------------ */
+    $$('[data-member]').forEach((member) => {
+        const media = $('.member__media', member);
+        const imgs = $$('img', media);
+        const label = $('[data-count-label]', member);
+        const frames = $('.member__frames', member);
+        if (imgs.length < 2) return;
+
+        const name = $('.member__name', member).textContent.trim();
+        const buttons = imgs.map((img, i) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.textContent = pad(i + 1);
+            b.setAttribute('aria-label', `${name}, photo ${i + 1} of ${imgs.length}`);
+            b.addEventListener('click', () => show(i));
+            frames.appendChild(b);
+            return b;
+        });
+        frames.hidden = false;
+
+        let current = 0;
+        function show(i) {
+            current = (i + imgs.length) % imgs.length;
+            imgs.forEach((img, k) => {
+                img.classList.toggle('is-active', k === current);
+                img.toggleAttribute('aria-hidden', k !== current);
+                if (k !== current) img.loading = 'eager'; // warm the next frames
+            });
+            buttons.forEach((b, k) => b.setAttribute('aria-pressed', String(k === current)));
+            label.textContent = `${pad(current + 1)} / ${pad(imgs.length)}`;
+        }
+
+        media.addEventListener('click', () => show(current + 1));
+        frames.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            show(current + (e.key === 'ArrowRight' ? 1 : -1));
+            buttons[current].focus();
+        });
+        show(0);
+    });
+
+    /* ------------------------------------------------------------------
        6. Footer wordmark — split + fit to the full width
        ------------------------------------------------------------------ */
     const wordmark = $('.footer__wordmark');
@@ -651,6 +694,13 @@
     gsap.from('.contact-info, .form-sentence, .form-services, .field--block, .form-submit', {
         y: 50, autoAlpha: 0, duration: 1.1, stagger: 0.1, ease: 'expo.out',
         scrollTrigger: { trigger: '.contact-grid', start: 'top 96%' },
+    });
+
+    $$('.member__info').forEach((info) => {
+        gsap.from(info.children, {
+            y: 40, autoAlpha: 0, duration: 1.1, stagger: 0.08, ease: 'expo.out',
+            scrollTrigger: { trigger: info, start: 'top 92%' },
+        });
     });
 
     gsap.from('.footer__wordmark .char', {

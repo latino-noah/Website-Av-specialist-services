@@ -90,6 +90,7 @@
         <a href="#home" class="logo" aria-label="Visual Dept — back to top">Visual Dept<span class="logo__tag" aria-hidden="true">(NL)</span></a>
         <nav class="nav-primary" aria-label="Main">
             <a href="#studio">Studio</a>
+            <a href="#team">Team</a>
             <a href="#services">Services</a>
             <a href="#process">Process</a>
             <a href="#pricing">Pricing</a>
@@ -108,11 +109,12 @@
         <ol class="menu__list">
             <li style="--i:0"><a href="#home"><span class="menu__num">00</span><span class="menu__word">Home</span></a></li>
             <li style="--i:1"><a href="#studio"><span class="menu__num">01</span><span class="menu__word">Studio</span></a></li>
-            <li style="--i:2"><a href="#services"><span class="menu__num">02</span><span class="menu__word">Services</span></a></li>
-            <li style="--i:3"><a href="#process"><span class="menu__num">03</span><span class="menu__word">Process</span></a></li>
-            <li style="--i:4"><a href="#pricing"><span class="menu__num">04</span><span class="menu__word">Pricing</span></a></li>
-            <li style="--i:5"><a href="#testimonials"><span class="menu__num">05</span><span class="menu__word">Reviews</span></a></li>
-            <li style="--i:6"><a href="#contact"><span class="menu__num">06</span><span class="menu__word">Contact</span></a></li>
+            <li style="--i:2"><a href="#team"><span class="menu__num">02</span><span class="menu__word">Team</span></a></li>
+            <li style="--i:3"><a href="#services"><span class="menu__num">03</span><span class="menu__word">Services</span></a></li>
+            <li style="--i:4"><a href="#process"><span class="menu__num">04</span><span class="menu__word">Process</span></a></li>
+            <li style="--i:5"><a href="#pricing"><span class="menu__num">05</span><span class="menu__word">Pricing</span></a></li>
+            <li style="--i:6"><a href="#testimonials"><span class="menu__num">06</span><span class="menu__word">Reviews</span></a></li>
+            <li style="--i:7"><a href="#contact"><span class="menu__num">07</span><span class="menu__word">Contact</span></a></li>
         </ol>
         <div class="menu__foot">
             <a href="mailto:noahda.c@outlook.com">noahda.c@outlook.com</a>
@@ -193,12 +195,65 @@
         </figure>
     </section>
 
+    <!-- Team: each portrait is a small contact sheet you can flip through -->
+    <section class="team" id="team" data-theme="light">
+        <div class="section-tag"><span>02</span><span>Team</span></div>
+        <div class="team__head">
+            <h2 class="team__title split-lines">
+                <span class="line"><span class="line__inner">The people</span></span>
+                <span class="line"><span class="line__inner"><em>behind the lens.</em></span></span>
+            </h2>
+            <p class="team__note">Two creatives, one studio. You work directly with the people who make your work.</p>
+        </div>
+
+        <article class="member" data-member>
+            <figure class="member__media" data-reveal data-cursor="Next">
+                <img class="is-active" src="team/web/gianni-1.jpg" alt="Gianni smiling in golden evening light" width="640" height="640" loading="lazy">
+                <img src="team/web/gianni-2.jpg" alt="Gianni wearing sunglasses, backlit by the sun" width="640" height="640" loading="lazy">
+                <img src="team/web/gianni-3.jpg" alt="Gianni sitting on a white bench in front of ivy" width="1000" height="1000" loading="lazy">
+                <div class="member__vf" aria-hidden="true">
+                    <i class="vf-corner vf-corner--tl"></i><i class="vf-corner vf-corner--tr"></i>
+                    <i class="vf-corner vf-corner--bl"></i><i class="vf-corner vf-corner--br"></i>
+                    <span class="member__cam"><span class="rec-dot"></span>Cam A</span>
+                    <span class="member__count" data-count-label>01 / 03</span>
+                </div>
+            </figure>
+            <div class="member__info">
+                <div>
+                    <h3 class="member__name">Gianni</h3>
+                    <p class="member__role">Co-founder</p>
+                </div>
+                <div class="member__frames" role="group" aria-label="Photos of Gianni" hidden></div>
+            </div>
+        </article>
+
+        <article class="member" data-member>
+            <figure class="member__media" data-reveal data-cursor="Next">
+                <img class="is-active" src="team/web/noah-1.jpg" alt="Noah in a white T-shirt, looking into the camera" width="1000" height="1166" loading="lazy">
+                <img src="team/web/noah-2.jpg" alt="Noah seated in warm stage light, looking to the side" width="640" height="800" loading="lazy">
+                <div class="member__vf" aria-hidden="true">
+                    <i class="vf-corner vf-corner--tl"></i><i class="vf-corner vf-corner--tr"></i>
+                    <i class="vf-corner vf-corner--bl"></i><i class="vf-corner vf-corner--br"></i>
+                    <span class="member__cam"><span class="rec-dot"></span>Cam B</span>
+                    <span class="member__count" data-count-label>01 / 02</span>
+                </div>
+            </figure>
+            <div class="member__info">
+                <div>
+                    <h3 class="member__name">Noah</h3>
+                    <p class="member__role">Co-founder</p>
+                </div>
+                <div class="member__frames" role="group" aria-label="Photos of Noah" hidden></div>
+            </div>
+        </article>
+    </section>
+
     <!-- Services: a horizontal film strip on desktop -->
     <section class="services" id="services" data-theme="dark">
         <div class="services__pin">
             <div class="services__track">
                 <header class="services__intro">
-                    <div class="section-tag section-tag--dark"><span>02</span><span>Services</span></div>
+                    <div class="section-tag section-tag--dark"><span>03</span><span>Services</span></div>
                     <h2 class="services__title split-lines">
                         <span class="line"><span class="line__inner">Three crafts,</span></span>
                         <span class="line"><span class="line__inner"><em>one eye.</em></span></span>
@@ -260,7 +315,7 @@
 
     <!-- Process: how a project runs, in four steps -->
     <section class="process" id="process" data-theme="light">
-        <div class="section-tag"><span>03</span><span>Process</span></div>
+        <div class="section-tag"><span>04</span><span>Process</span></div>
         <div class="process__head">
             <h2 class="process__title split-lines">
                 <span class="line"><span class="line__inner">How it works.</span></span>
@@ -294,7 +349,7 @@
 
     <!-- Pricing: an editorial rate card -->
     <section class="pricing" id="pricing" data-theme="light">
-        <div class="section-tag"><span>04</span><span>Pricing</span></div>
+        <div class="section-tag"><span>05</span><span>Pricing</span></div>
         <div class="pricing__head">
             <h2 class="pricing__title split-lines">
                 <span class="line"><span class="line__inner">Simple pricing.</span></span>
@@ -383,7 +438,7 @@
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials" data-theme="dark">
         <div class="testimonials__head">
-            <div class="section-tag section-tag--dark"><span>05</span><span>Reviews</span></div>
+            <div class="section-tag section-tag--dark"><span>06</span><span>Reviews</span></div>
             <h2 class="testimonials__title">What our clients say <em>— don't just take our word for it.</em></h2>
         </div>
 
@@ -412,7 +467,7 @@
 
     <!-- Contact -->
     <section class="contact" id="contact" data-theme="light">
-        <div class="section-tag"><span>06</span><span>Contact</span></div>
+        <div class="section-tag"><span>07</span><span>Contact</span></div>
         <h2 class="contact__title split-lines">
             <span class="line"><span class="line__inner">Get in touch.</span></span>
             <span class="line"><span class="line__inner"><em>Make it worth</em></span></span>
@@ -479,6 +534,7 @@
                     <h4>Menu</h4>
                     <ul>
                         <li><a href="#studio">Studio</a></li>
+                        <li><a href="#team">Team</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#process">Process</a></li>
                         <li><a href="#pricing">Pricing</a></li>
